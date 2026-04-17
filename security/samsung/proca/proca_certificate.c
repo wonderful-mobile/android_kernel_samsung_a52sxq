@@ -258,11 +258,11 @@ bool is_certificate_relevant_to_task(
 {
 	const char system_server_app_name[] = "/system/framework/services.jar";
 	const char system_server[] = "system_server";
-	const size_t max_app_name = 1024;
+#define MAX_APP_NAME 1024
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 10, 0) || defined(PROCA_KUNIT_ENABLED))
 	char cmdline[1024 + 1];
 #else
-	char cmdline[max_app_name + 1];
+	char cmdline[MAX_APP_NAME + 1];
 #endif
 	int cmdline_size;
 
@@ -270,7 +270,7 @@ bool is_certificate_relevant_to_task(
 		if (!check_native_pa_id(parsed_cert, task))
 			return false;
 
-	cmdline_size = get_cmdline(task, cmdline, max_app_name);
+	cmdline_size = get_cmdline(task, cmdline, MAX_APP_NAME);
 	cmdline[cmdline_size] = 0;
 
 	// Special case for system_server
