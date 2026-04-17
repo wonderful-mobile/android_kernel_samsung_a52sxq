@@ -1,8 +1,8 @@
 #!/bin/bash
 
 export ARCH=arm64
-export LC_ALL=C
 
+LC_ALL=C
 BUILD_CROSS_COMPILE=$(pwd)/toolchain/google/bin/aarch64-linux-android-
 KERNEL_LLVM_BIN=$(pwd)/toolchain/clang-12.0.7/bin/clang
 CLANG_TRIPLE=aarch64-linux-gnu-
